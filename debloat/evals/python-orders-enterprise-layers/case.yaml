@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: python-orders-enterprise-layers
+expected_outcome: |
+  The layered orders package is cut to a fraction of its size while every public behavior, error and message stays identical.
+context:
+  scaffold_script: place-files.sh

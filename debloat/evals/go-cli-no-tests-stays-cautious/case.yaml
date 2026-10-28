@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: go-cli-no-tests-stays-cautious
+expected_outcome: |
+  Provably dead code (unused functions, commented-out code) is removed, the program still builds and behaves the same, input validation is kept, and the lack of tests is acknowledged.
+context:
+  scaffold_script: place-files.sh

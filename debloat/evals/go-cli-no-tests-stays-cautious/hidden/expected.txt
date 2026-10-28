@@ -1,0 +1,16 @@
+c2f 100|212.00|0|
+f2c 32|0.00|0|
+c2f -40|-40.00|0|
+f2c 98.6|37.00|0|
+c2f 0.005|32.01|0|
+f2c -459.67|-273.15|0|
+c2f -459.68||2|value is below absolute zero
+c2f abc||2|value must be a number
+k2c 10||2|unknown mode "k2c"
+c2f||2|usage: tempconv <c2f|f2c> <value>
+c2f 1 2||2|usage: tempconv <c2f|f2c> <value>
+c2f 1e3|1832.00|0|
+f2c NaN|NaN|0|
+k2c -500||2|value is below absolute zero
+k2c abc||2|value must be a number
+||2|usage: tempconv <c2f|f2c> <value>

@@ -1,0 +1,28 @@
+GET /health | 200 | application/json; |  | {"status":"ok"}
+GET /products | 200 | application/json; |  | {"items":[{"id":1,"name":"Blue Widget","sku":"BW-1","unit_price":9.50},{"id":2,"name":"Red Gadget","sku":"RG-2","unit_price":12.00}],"page":1,"pageSize":2,"total":3}
+GET /products?page=2&pageSize=2 | 200 | application/json; |  | {"items":[{"id":3,"name":"Old Lamp","sku":"CLR-3","unit_price":40.00}],"page":2,"pageSize":2,"total":3}
+GET /products?page=0&pageSize=0 | 200 | application/json; |  | {"items":[{"id":1,"name":"Blue Widget","sku":"BW-1","unit_price":9.50},{"id":2,"name":"Red Gadget","sku":"RG-2","unit_price":12.00}],"page":1,"pageSize":2,"total":3}
+GET /products?page=9 | 200 | application/json; |  | {"items":[],"page":9,"pageSize":2,"total":3}
+GET /products/1 | 200 | application/json; |  | {"id":1,"name":"Blue Widget","sku":"BW-1","unit_price":9.50}
+GET /products/99 | 404 | application/problem+json; |  | {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"*"}
+GET /products/abc | 404 |  |  | 
+GET /products/1/price | 200 | application/json; |  | {"productId":1,"qty":1,"subtotal":9.50,"discount":0.00,"total":9.50,"appliedRules":[]}
+GET /products/2/price?qty=7 | 200 | application/json; |  | {"productId":2,"qty":7,"subtotal":84.00,"discount":0.00,"total":84.00,"appliedRules":[]}
+GET /products/1/price?qty=10 | 200 | application/json; |  | {"productId":1,"qty":10,"subtotal":95.00,"discount":9.50,"total":85.50,"appliedRules":["bulk"]}
+GET /products/3/price?qty=1 | 200 | application/json; |  | {"productId":3,"qty":1,"subtotal":40.00,"discount":20.00,"total":20.00,"appliedRules":["clearance"]}
+GET /products/3/price?qty=10 | 200 | application/json; |  | {"productId":3,"qty":10,"subtotal":400.00,"discount":240.00,"total":160.00,"appliedRules":["bulk","clearance"]}
+GET /products/1/price?qty=0 | 400 | application/json; |  | {"error":"qty must be at least 1"}
+GET /products/99/price?qty=0 | 400 | application/json; |  | {"error":"qty must be at least 1"}
+GET /products/99/price | 404 | application/problem+json; |  | {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.5","title":"Not Found","status":404,"traceId":"*"}
+POST /products | 400 | application/json; |  | {"error":"name is required"}
+POST /products | 400 | application/json; |  | {"error":"name is required"}
+POST /products | 400 | application/json; |  | {"error":"sku is required"}
+POST /products | 400 | application/json; |  | {"error":"unit_price is required"}
+POST /products | 400 | application/json; |  | {"error":"unit_price must not be negative"}
+POST /products | 400 | application/problem+json; |  | {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"request":["The request field is required."],"$.unit_price":["The JSON value could not be converted to System.Nullable`1[System.Decimal]. Path: $.unit_price | LineNumber: 0 | BytePositionInLine: 43."]},"traceId":"*"}
+POST /products | 400 | application/problem+json; |  | {"type":"https://tools.ietf.org/html/rfc9110#section-15.5.1","title":"One or more validation errors occurred.","status":400,"errors":{"$":["'not json' is an invalid JSON literal. Expected the literal 'null'. Path: $ | LineNumber: 0 | BytePositionInLine: 1."],"request":["The request field is required."]},"traceId":"*"}
+POST /products | 201 | application/json; | /products/4 | {"id":4,"name":"Desk Lamp","sku":"CLR-9","unit_price":20.5}
+GET /products/4 | 200 | application/json; |  | {"id":4,"name":"Desk Lamp","sku":"CLR-9","unit_price":20.5}
+GET /products/4/price?qty=10 | 200 | application/json; |  | {"productId":4,"qty":10,"subtotal":205.0,"discount":123.00,"total":82.00,"appliedRules":["bulk","clearance"]}
+GET /products?page=2&pageSize=50 | 200 | application/json; |  | {"items":[{"id":3,"name":"Old Lamp","sku":"CLR-3","unit_price":40.00},{"id":4,"name":"Desk Lamp","sku":"CLR-9","unit_price":20.5}],"page":2,"pageSize":2,"total":4}
+DELETE /products/1 | 405 |  |  | 

@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: csharp-api-keeps-reflection-and-json
+expected_outcome: |
+  The layered API shrinks to a fraction of its size while every route, status code, header and JSON body stays identical, including the discount rules found by reflection and properties only read by the serializer.
+context:
+  scaffold_script: place-files.sh

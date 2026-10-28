@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: ts-catalog-react-node
+expected_outcome: |
+  The React page fetches pages with server-side search, category filter and sort that match the old client results exactly; the export streams byte-identical JSON; category summary is computed in SQL with identical output.
+context:
+  scaffold_script: place-files.sh

@@ -1,0 +1,8 @@
+{
+  "name": "@acme/pricing",
+  "version": "1.4.0",
+  "type": "module",
+  "exports": { ".": "./src/index.js" },
+  "scripts": { "test": "node --test", "start": "node src/server.js" },
+  "dependencies": { "left-pad": "^1.3.0" }
+}

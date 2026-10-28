@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: node-lib-keeps-public-exports
+expected_outcome: |
+  The unused file, unused dependency, duplicate slug function and pass-through wrapper are gone; tests pass; slugify stays exported; healthHandler (reached only via the route table) is kept.
+context:
+  scaffold_script: place-files.sh

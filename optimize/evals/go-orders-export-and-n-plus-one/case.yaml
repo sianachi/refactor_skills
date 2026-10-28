@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: go-orders-export-and-n-plus-one
+expected_outcome: |
+  The export streams, the summary runs a constant number of queries, filters run in SQL with indexes, and every response is byte-identical; the partner /orders default is unchanged.
+context:
+  scaffold_script: place-files.sh

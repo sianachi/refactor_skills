@@ -1,0 +1,24 @@
+{
+  "name": "catalog",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "vite build web",
+    "start": "node server/index.ts",
+    "typecheck": "tsc --noEmit -p web && tsc --noEmit -p server"
+  },
+  "dependencies": {
+    "pg": "8.16.3",
+    "react": "19.2.0",
+    "react-dom": "19.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.9.1",
+    "@types/pg": "8.15.5",
+    "@types/react": "19.2.2",
+    "@types/react-dom": "19.2.2",
+    "@vitejs/plugin-react": "5.0.4",
+    "typescript": "5.9.3",
+    "vite": "7.1.12"
+  }
+}

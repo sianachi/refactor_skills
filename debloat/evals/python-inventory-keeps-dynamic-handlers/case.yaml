@@ -1,0 +1,6 @@
+schema_version: "1.1"
+name: python-inventory-keeps-dynamic-handlers
+expected_outcome: |
+  Dead and redundant code is removed, tests still pass, the public API in __all__ is intact, and handle_audit (called by name via getattr and events.json) is kept.
+context:
+  scaffold_script: place-files.sh
